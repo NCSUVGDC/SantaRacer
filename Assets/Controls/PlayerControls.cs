@@ -41,6 +41,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChimneyUse"",
+                    ""type"": ""Button"",
+                    ""id"": ""39815b50-6b97-4350-9bed-3e974497ac98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -76,6 +84,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20a1bfb0-6922-4a0a-b21d-89c4e27f8a63"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChimneyUse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -87,6 +106,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Speed = m_Gameplay.FindAction("Speed", throwIfNotFound: true);
         m_Gameplay_Spin = m_Gameplay.FindAction("Spin", throwIfNotFound: true);
         m_Gameplay_Turn = m_Gameplay.FindAction("Turn", throwIfNotFound: true);
+        m_Gameplay_ChimneyUse = m_Gameplay.FindAction("ChimneyUse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,6 +159,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Speed;
     private readonly InputAction m_Gameplay_Spin;
     private readonly InputAction m_Gameplay_Turn;
+    private readonly InputAction m_Gameplay_ChimneyUse;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -146,6 +167,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Speed => m_Wrapper.m_Gameplay_Speed;
         public InputAction @Spin => m_Wrapper.m_Gameplay_Spin;
         public InputAction @Turn => m_Wrapper.m_Gameplay_Turn;
+        public InputAction @ChimneyUse => m_Wrapper.m_Gameplay_ChimneyUse;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -164,6 +186,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Turn.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurn;
                 @Turn.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurn;
                 @Turn.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurn;
+                @ChimneyUse.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChimneyUse;
+                @ChimneyUse.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChimneyUse;
+                @ChimneyUse.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChimneyUse;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -177,6 +202,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Turn.started += instance.OnTurn;
                 @Turn.performed += instance.OnTurn;
                 @Turn.canceled += instance.OnTurn;
+                @ChimneyUse.started += instance.OnChimneyUse;
+                @ChimneyUse.performed += instance.OnChimneyUse;
+                @ChimneyUse.canceled += instance.OnChimneyUse;
             }
         }
     }
@@ -186,5 +214,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSpeed(InputAction.CallbackContext context);
         void OnSpin(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
+        void OnChimneyUse(InputAction.CallbackContext context);
     }
 }
