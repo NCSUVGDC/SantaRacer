@@ -14,6 +14,8 @@ public class KrampusMovement : MonoBehaviour
     Vector2 direction;
     float distancetoGround;
     public float jumpspeed = 5.0f;
+    public bool movable = true;
+    public bool canjump = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,7 @@ public class KrampusMovement : MonoBehaviour
     }
     void Jump(CallbackContext ctx)
     {
-        if (Grounded())
+        if (Grounded() && canjump)
         {
             player.velocity = new Vector3(player.velocity.x, jumpspeed, player.velocity.z);
         }
@@ -40,9 +42,12 @@ public class KrampusMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
-        player.position += transform.forward * direction[1] * speed * Time.deltaTime;
-        player.position += transform.right * direction[0] * speed * Time.deltaTime;
+        if (movable)
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+            player.position += transform.forward * direction[1] * speed * Time.deltaTime;
+            player.position += transform.right * direction[0] * speed * Time.deltaTime;
+        }
     }
     bool Grounded()
     {
