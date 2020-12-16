@@ -7,9 +7,6 @@ public class LaunchPad : MonoBehaviour
     public Transform landing;
     public float strength = 0.1f;
     public bool teleport = false;
-    private void Start()
-    {
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Krampus")
