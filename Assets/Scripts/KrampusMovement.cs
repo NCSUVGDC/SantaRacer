@@ -12,14 +12,28 @@ public class KrampusMovement : MonoBehaviour
     float forward = 0;
     float sideways = 0;
     Vector2 direction;
+    float distancetoGround;
+    public float jumpspeed = 5.0f;
+    public bool movable = true;
+    public bool canjump = true;
     // Start is called before the first frame update
     void Start()
     {
+        distancetoGround = GetComponent<Collider>().bounds.extents.y;
         control = new PlayerControls();
         control.Gameplay.KrampusMove.performed += Direction;
         control.Gameplay.KrampusMove.canceled += ctx => direction = new Vector2(0,0);
+        control.Gameplay.Jump.performed += Jump;
+        control.Gameplay.Jump.Enable();
         control.Gameplay.KrampusMove.Enable();
         player = GetComponent<Rigidbody>();
+    }
+    void Jump(CallbackContext ctx)
+    {
+        if (Grounded() && canjump)
+        {
+            player.velocity = new Vector3(player.velocity.x, jumpspeed, player.velocity.z);
+        }
     }
     void Direction(CallbackContext ctx)
     {
@@ -28,8 +42,15 @@ public class KrampusMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
-        player.position += transform.forward * direction[1] * speed * Time.deltaTime;
-        player.position += transform.right * direction[0] * speed * Time.deltaTime;
+        if (movable)
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+            player.position += transform.forward * direction[1] * speed * Time.deltaTime;
+            player.position += transform.right * direction[0] * speed * Time.deltaTime;
+        }
+    }
+    bool Grounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distancetoGround + .1f);
     }
 }

@@ -24,6 +24,8 @@ public class CameraMovement : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
     Vector3 possiblepos;
+    public bool incatapult = false;
+    public GameObject catapult;
     // Use this for initialization
     void Start()
     {
@@ -76,6 +78,10 @@ public class CameraMovement : MonoBehaviour
 
             transform.rotation = rotation;
             transform.position = position;
+            if (incatapult)
+            {
+                catapult.transform.eulerAngles = new Vector3(catapult.transform.eulerAngles.x, transform.eulerAngles.y+180, catapult.transform.eulerAngles.z);
+            }
         }
     }
 

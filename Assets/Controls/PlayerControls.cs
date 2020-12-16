@@ -73,6 +73,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""abed44bb-9727-4357-9ae9-d03089c2110b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e452e71d-216d-4585-9e3c-e7253e4b4daf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -196,6 +212,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""KrampusMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""784a06ac-5763-42ad-aea0-0863b7cfdbd3"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31bb6a30-d12f-4bab-963f-00363eb0d246"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -211,6 +249,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_CameraRotX = m_Gameplay.FindAction("CameraRotX", throwIfNotFound: true);
         m_Gameplay_CameraRotY = m_Gameplay.FindAction("CameraRotY", throwIfNotFound: true);
         m_Gameplay_KrampusMove = m_Gameplay.FindAction("KrampusMove", throwIfNotFound: true);
+        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -267,6 +307,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_CameraRotX;
     private readonly InputAction m_Gameplay_CameraRotY;
     private readonly InputAction m_Gameplay_KrampusMove;
+    private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -278,6 +320,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @CameraRotX => m_Wrapper.m_Gameplay_CameraRotX;
         public InputAction @CameraRotY => m_Wrapper.m_Gameplay_CameraRotY;
         public InputAction @KrampusMove => m_Wrapper.m_Gameplay_KrampusMove;
+        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +352,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @KrampusMove.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusMove;
                 @KrampusMove.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusMove;
                 @KrampusMove.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusMove;
+                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -333,6 +383,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @KrampusMove.started += instance.OnKrampusMove;
                 @KrampusMove.performed += instance.OnKrampusMove;
                 @KrampusMove.canceled += instance.OnKrampusMove;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -346,5 +402,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnCameraRotX(InputAction.CallbackContext context);
         void OnCameraRotY(InputAction.CallbackContext context);
         void OnKrampusMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
