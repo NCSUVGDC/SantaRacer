@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class Chimney : MonoBehaviour
 {
@@ -8,15 +9,23 @@ public class Chimney : MonoBehaviour
     public float staytime = 3.0f;
     float timeelapsed = 0f;
     public Material green;
-    void Start()
-    {
-        
+    PlayerControls controls;
+    bool pressed = false;
+    private void Awake()
+    { 
+        controls = new PlayerControls();
+        controls.Gameplay.ChimneyUse.performed += OnPress;
+        controls.Gameplay.ChimneyUse.canceled += OnRelease;
+        controls.Gameplay.ChimneyUse.Enable();
     }
-
-    // Update is called once per frame
-    void Update()
+    void OnPress(CallbackContext ctx)
     {
-        
+        pressed = true;
+    }
+    void OnRelease(CallbackContext ctx)
+    {
+        pressed = false;
+        timeelapsed = 0f;
     }
     private void OnTriggerExit(Collider other)
     {
@@ -26,7 +35,7 @@ public class Chimney : MonoBehaviour
     {
         if (other.tag == "Sleigh")
         {
-            if (timeelapsed < staytime && Input.GetKey(KeyCode.Q))
+            if (timeelapsed < staytime && pressed)
             {
                 timeelapsed += Time.deltaTime;
             }

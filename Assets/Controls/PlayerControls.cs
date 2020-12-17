@@ -41,6 +41,54 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChimneyUse"",
+                    ""type"": ""Button"",
+                    ""id"": ""39815b50-6b97-4350-9bed-3e974497ac98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraRotX"",
+                    ""type"": ""Value"",
+                    ""id"": ""947a80e1-f523-4dc4-a84a-cd26994d926d"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraRotY"",
+                    ""type"": ""Value"",
+                    ""id"": ""bcc2cfc0-c851-4124-bce3-a935030891ff"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""KrampusMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""9e5fd3ff-eade-494f-9679-fd70c75d3cb9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""abed44bb-9727-4357-9ae9-d03089c2110b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e452e71d-216d-4585-9e3c-e7253e4b4daf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -76,6 +124,171 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20a1bfb0-6922-4a0a-b21d-89c4e27f8a63"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChimneyUse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""909d2678-bf61-4330-b9a0-4133c22f1acb"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbfea11c-6c0d-459d-a88c-5df5c5734723"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0f0fd7b-d5b8-4cc0-838e-9a967e63011b"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18680b88-564a-448e-be9e-3759e51e7af3"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""9b5a70f1-ac3a-48b6-9496-84b9afc5564c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c860e291-c9ca-4a2f-95c2-700fdb3bda60"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""dd3e0245-cf62-46d9-9c92-d1e8e72d6eee"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""27083cd0-f931-48e4-b4f6-ad456f3b026d"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""bf91367d-c137-4237-a480-ff67795ef393"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb3ae668-be02-4caf-91df-9eedc91a9f34"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""784a06ac-5763-42ad-aea0-0863b7cfdbd3"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29250b5c-ac34-401f-b14c-5ae1fe1dccb5"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31bb6a30-d12f-4bab-963f-00363eb0d246"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f707c410-c4f8-4deb-9428-bb00f10da0a4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -87,6 +300,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Speed = m_Gameplay.FindAction("Speed", throwIfNotFound: true);
         m_Gameplay_Spin = m_Gameplay.FindAction("Spin", throwIfNotFound: true);
         m_Gameplay_Turn = m_Gameplay.FindAction("Turn", throwIfNotFound: true);
+        m_Gameplay_ChimneyUse = m_Gameplay.FindAction("ChimneyUse", throwIfNotFound: true);
+        m_Gameplay_CameraRotX = m_Gameplay.FindAction("CameraRotX", throwIfNotFound: true);
+        m_Gameplay_CameraRotY = m_Gameplay.FindAction("CameraRotY", throwIfNotFound: true);
+        m_Gameplay_KrampusMove = m_Gameplay.FindAction("KrampusMove", throwIfNotFound: true);
+        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,6 +358,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Speed;
     private readonly InputAction m_Gameplay_Spin;
     private readonly InputAction m_Gameplay_Turn;
+    private readonly InputAction m_Gameplay_ChimneyUse;
+    private readonly InputAction m_Gameplay_CameraRotX;
+    private readonly InputAction m_Gameplay_CameraRotY;
+    private readonly InputAction m_Gameplay_KrampusMove;
+    private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -146,6 +371,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Speed => m_Wrapper.m_Gameplay_Speed;
         public InputAction @Spin => m_Wrapper.m_Gameplay_Spin;
         public InputAction @Turn => m_Wrapper.m_Gameplay_Turn;
+        public InputAction @ChimneyUse => m_Wrapper.m_Gameplay_ChimneyUse;
+        public InputAction @CameraRotX => m_Wrapper.m_Gameplay_CameraRotX;
+        public InputAction @CameraRotY => m_Wrapper.m_Gameplay_CameraRotY;
+        public InputAction @KrampusMove => m_Wrapper.m_Gameplay_KrampusMove;
+        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -164,6 +395,24 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Turn.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurn;
                 @Turn.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurn;
                 @Turn.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurn;
+                @ChimneyUse.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChimneyUse;
+                @ChimneyUse.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChimneyUse;
+                @ChimneyUse.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChimneyUse;
+                @CameraRotX.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCameraRotX;
+                @CameraRotX.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCameraRotX;
+                @CameraRotX.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCameraRotX;
+                @CameraRotY.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCameraRotY;
+                @CameraRotY.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCameraRotY;
+                @CameraRotY.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCameraRotY;
+                @KrampusMove.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusMove;
+                @KrampusMove.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusMove;
+                @KrampusMove.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusMove;
+                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -177,6 +426,24 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Turn.started += instance.OnTurn;
                 @Turn.performed += instance.OnTurn;
                 @Turn.canceled += instance.OnTurn;
+                @ChimneyUse.started += instance.OnChimneyUse;
+                @ChimneyUse.performed += instance.OnChimneyUse;
+                @ChimneyUse.canceled += instance.OnChimneyUse;
+                @CameraRotX.started += instance.OnCameraRotX;
+                @CameraRotX.performed += instance.OnCameraRotX;
+                @CameraRotX.canceled += instance.OnCameraRotX;
+                @CameraRotY.started += instance.OnCameraRotY;
+                @CameraRotY.performed += instance.OnCameraRotY;
+                @CameraRotY.canceled += instance.OnCameraRotY;
+                @KrampusMove.started += instance.OnKrampusMove;
+                @KrampusMove.performed += instance.OnKrampusMove;
+                @KrampusMove.canceled += instance.OnKrampusMove;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -186,5 +453,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSpeed(InputAction.CallbackContext context);
         void OnSpin(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
+        void OnChimneyUse(InputAction.CallbackContext context);
+        void OnCameraRotX(InputAction.CallbackContext context);
+        void OnCameraRotY(InputAction.CallbackContext context);
+        void OnKrampusMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
