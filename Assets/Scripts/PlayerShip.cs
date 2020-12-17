@@ -12,7 +12,7 @@ public class PlayerShip : MonoBehaviour
 
     public float speed = 5;
     public float maxSpeed = 15;
-    public float minSpeed = 1;
+    public float minSpeed = 0;
     
 
     public float speedSpinBoundary = (float)0.5;
