@@ -11,6 +11,7 @@ public class Catapult : MonoBehaviour
     PlayerControls control;
     GameObject player;
     bool inRange = false;
+    public Camera krampuscamera;
     private void Start()
     {
         control = new PlayerControls();
@@ -28,7 +29,7 @@ public class Catapult : MonoBehaviour
             player.transform.parent = null;
             player.GetComponent<KrampusMovement>().canjump = true;
             player.GetComponent<KrampusMovement>().movable = true;
-            Camera.main.GetComponent<CameraMovement>().incatapult = false;
+            krampuscamera.GetComponent<CameraMovement>().incatapult = false;
         }
     }
     void Enter(CallbackContext ctx)
@@ -41,8 +42,8 @@ public class Catapult : MonoBehaviour
             player.transform.SetParent(transform);
             player.GetComponent<KrampusMovement>().movable = false;
             player.GetComponent<KrampusMovement>().canjump = false;
-            Camera.main.GetComponent<CameraMovement>().incatapult = true;
-            Camera.main.GetComponent<CameraMovement>().catapult = gameObject;
+            krampuscamera.GetComponent<CameraMovement>().incatapult = true;
+            krampuscamera.GetComponent<CameraMovement>().catapult = gameObject;
         }
     }
     private void OnTriggerEnter(Collider other)
