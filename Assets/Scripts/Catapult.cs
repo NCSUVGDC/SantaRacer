@@ -28,11 +28,11 @@ public class Catapult : MonoBehaviour
         if (occupied)
         {
             occupied = false;
+            transform.parent = null;
             var dir = Quaternion.AngleAxis(angle, transform.right) * transform.forward;
             player.GetComponent<Rigidbody>().AddForce(dir * -strength);
             player.GetComponent<KrampusMovement>().canjump = true;
             player.GetComponent<KrampusMovement>().movable = true;
-            //krampuscamera.GetComponent<Cam1stPerson>().inCatapult = false;
         }
     }
     void Enter(CallbackContext ctx)
@@ -40,13 +40,15 @@ public class Catapult : MonoBehaviour
         if (inRange)
         {
             Vector3 newpos = transform.position;
-            newpos.y += 2;
+            newpos.y += 1;
             player.transform.position = newpos;
             occupied = true;
+            Vector3 rotation = player.transform.eulerAngles;
+            rotation.y = transform.eulerAngles.y+180;
+            player.transform.eulerAngles = rotation;
             player.GetComponent<KrampusMovement>().movable = false;
             player.GetComponent<KrampusMovement>().canjump = false;
-            //krampuscamera.GetComponent<Cam1stPerson>().inCatapult = true;
-            //krampuscamera.GetComponent<Cam1stPerson>().catapult = transform;
+            transform.SetParent(player.transform);
         }
     }
     private void OnTriggerEnter(Collider other)
