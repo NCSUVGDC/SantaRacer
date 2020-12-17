@@ -16,6 +16,7 @@ public class KrampusMovement : MonoBehaviour
     public float jumpspeed = 5.0f;
     public bool movable = true;
     public bool canjump = true;
+    public Camera krampuscamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,7 @@ public class KrampusMovement : MonoBehaviour
     {
         if (movable)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, krampuscamera.transform.eulerAngles.y, transform.eulerAngles.z);
             player.position += transform.forward * direction[1] * speed * Time.deltaTime;
             player.position += transform.right * direction[0] * speed * Time.deltaTime;
         }
