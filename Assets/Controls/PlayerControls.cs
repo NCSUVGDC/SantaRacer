@@ -89,6 +89,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChildThrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""82d6c354-1a37-42cc-a212-3cdf2d641291"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -128,7 +136,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""20a1bfb0-6922-4a0a-b21d-89c4e27f8a63"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
@@ -149,8 +157,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fbfea11c-6c0d-459d-a88c-5df5c5734723"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d0f0fd7b-d5b8-4cc0-838e-9a967e63011b"",
                     ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18680b88-564a-448e-be9e-3759e51e7af3"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -215,8 +245,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fb3ae668-be02-4caf-91df-9eedc91a9f34"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""784a06ac-5763-42ad-aea0-0863b7cfdbd3"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29250b5c-ac34-401f-b14c-5ae1fe1dccb5"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
@@ -232,6 +284,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f707c410-c4f8-4deb-9428-bb00f10da0a4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93dfab70-f032-4762-a584-b9fe8b02be18"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChildThrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -251,6 +325,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_KrampusMove = m_Gameplay.FindAction("KrampusMove", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_ChildThrow = m_Gameplay.FindAction("ChildThrow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -309,6 +384,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_KrampusMove;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_ChildThrow;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -322,6 +398,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @KrampusMove => m_Wrapper.m_Gameplay_KrampusMove;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @ChildThrow => m_Wrapper.m_Gameplay_ChildThrow;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -358,6 +435,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @ChildThrow.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
+                @ChildThrow.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
+                @ChildThrow.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -389,6 +469,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @ChildThrow.started += instance.OnChildThrow;
+                @ChildThrow.performed += instance.OnChildThrow;
+                @ChildThrow.canceled += instance.OnChildThrow;
             }
         }
     }
@@ -404,5 +487,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnKrampusMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnChildThrow(InputAction.CallbackContext context);
     }
 }

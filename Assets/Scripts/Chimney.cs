@@ -12,7 +12,7 @@ public class Chimney : MonoBehaviour
     PlayerControls controls;
     bool pressed = false;
     private void Awake()
-    {
+    { 
         controls = new PlayerControls();
         controls.Gameplay.ChimneyUse.performed += OnPress;
         controls.Gameplay.ChimneyUse.canceled += OnRelease;
