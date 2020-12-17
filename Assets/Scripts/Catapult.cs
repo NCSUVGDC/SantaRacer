@@ -30,6 +30,7 @@ public class Catapult : MonoBehaviour
             player.GetComponent<KrampusMovement>().canjump = true;
             player.GetComponent<KrampusMovement>().movable = true;
             krampuscamera.GetComponent<CameraMovement>().incatapult = false;
+            occupied = false;
         }
     }
     void Enter(CallbackContext ctx)

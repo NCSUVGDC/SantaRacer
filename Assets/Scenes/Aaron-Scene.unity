@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &50098881 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5454560638577420770, guid: ef4cbb3acc5f99248986aa1c43144a02, type: 3}
+  m_PrefabInstance: {fileID: 5454560637423547501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &280826042 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 432046790106177868, guid: 22585fe904db4d949bde9676df90b46b, type: 3}
@@ -238,6 +243,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &584330150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5454560637503248787, guid: ef4cbb3acc5f99248986aa1c43144a02, type: 3}
+  m_PrefabInstance: {fileID: 5454560637423547501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &584330157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584330150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f3e69345c696441ba5adf3e28c65d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  child: {fileID: 2493267612666921348, guid: bbb7074ea2d8d1e4680153c2c787db55, type: 3}
+  speed: 20
+  krampuscamera: {fileID: 50098881}
+  waittime: 5
 --- !u!1001 &736173821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -597,6 +623,18 @@ PrefabInstance:
     - target: {fileID: 5454560637503248787, guid: ef4cbb3acc5f99248986aa1c43144a02, type: 3}
       propertyPath: m_Name
       value: Krampus
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454560638577420797, guid: ef4cbb3acc5f99248986aa1c43144a02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454560638577420797, guid: ef4cbb3acc5f99248986aa1c43144a02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454560638577420797, guid: ef4cbb3acc5f99248986aa1c43144a02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef4cbb3acc5f99248986aa1c43144a02, type: 3}

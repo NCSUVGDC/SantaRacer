@@ -89,6 +89,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChildThrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""82d6c354-1a37-42cc-a212-3cdf2d641291"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -289,6 +297,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93dfab70-f032-4762-a584-b9fe8b02be18"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChildThrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -306,6 +325,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_KrampusMove = m_Gameplay.FindAction("KrampusMove", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_ChildThrow = m_Gameplay.FindAction("ChildThrow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -364,6 +384,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_KrampusMove;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_ChildThrow;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -377,6 +398,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @KrampusMove => m_Wrapper.m_Gameplay_KrampusMove;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @ChildThrow => m_Wrapper.m_Gameplay_ChildThrow;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,6 +435,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @ChildThrow.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
+                @ChildThrow.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
+                @ChildThrow.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -444,6 +469,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @ChildThrow.started += instance.OnChildThrow;
+                @ChildThrow.performed += instance.OnChildThrow;
+                @ChildThrow.canceled += instance.OnChildThrow;
             }
         }
     }
@@ -459,5 +487,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnKrampusMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnChildThrow(InputAction.CallbackContext context);
     }
 }
