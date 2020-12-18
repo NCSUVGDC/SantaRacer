@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sleigh
   - Krampus
+  - Ground
   layers:
   - Default
   - TransparentFX
