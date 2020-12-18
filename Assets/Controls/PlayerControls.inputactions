@@ -78,7 +78,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ChildThrow",
+                    "name": "KrampusAttack1",
                     "type": "Button",
                     "id": "82d6c354-1a37-42cc-a212-3cdf2d641291",
                     "expectedControlType": "Button",
@@ -86,7 +86,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SantaTrap",
+                    "name": "SantaTrapW",
                     "type": "Button",
                     "id": "56277d50-f987-4ccb-8d8a-a80802bc17e6",
                     "expectedControlType": "Button",
@@ -105,6 +105,38 @@
                     "name": "CycleTrapsL",
                     "type": "Button",
                     "id": "d3834339-aeaf-4045-8f2a-2e6a7cbc8f27",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SantaTrapN",
+                    "type": "Button",
+                    "id": "a0c23572-1a8a-439d-b87d-529c3faae923",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SantaTrapE",
+                    "type": "Button",
+                    "id": "454bb12b-dbf3-4abd-ad2e-11eee0b147d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "KrampusAttack2",
+                    "type": "Button",
+                    "id": "c777c396-29b9-40e7-8738-34fcd4201bef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "KrampusAttack3",
+                    "type": "Button",
+                    "id": "8c32190e-3cb1-4a8d-92a9-87807a56c927",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -312,11 +344,11 @@
                 {
                     "name": "",
                     "id": "93dfab70-f032-4762-a584-b9fe8b02be18",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/1",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "ChildThrow",
+                    "action": "KrampusAttack1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -327,7 +359,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "SantaTrap",
+                    "action": "SantaTrapW",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -350,6 +382,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "CycleTrapsL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfcec838-0ce1-43cb-8cb9-d9d5a2a34e0e",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SantaTrapN",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12c378ed-bc44-4f61-b40f-693115734d0c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SantaTrapE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14ed9c59-b320-4eb6-b61b-f73443ab34ef",
+                    "path": "<Keyboard>/2",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KrampusAttack2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "727c15e6-c1de-4161-91b7-17deda38da40",
+                    "path": "<Keyboard>/3",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KrampusAttack3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

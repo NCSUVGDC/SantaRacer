@@ -91,7 +91,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ChildThrow"",
+                    ""name"": ""KrampusAttack1"",
                     ""type"": ""Button"",
                     ""id"": ""82d6c354-1a37-42cc-a212-3cdf2d641291"",
                     ""expectedControlType"": ""Button"",
@@ -99,7 +99,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""SantaTrap"",
+                    ""name"": ""SantaTrapW"",
                     ""type"": ""Button"",
                     ""id"": ""56277d50-f987-4ccb-8d8a-a80802bc17e6"",
                     ""expectedControlType"": ""Button"",
@@ -118,6 +118,38 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""CycleTrapsL"",
                     ""type"": ""Button"",
                     ""id"": ""d3834339-aeaf-4045-8f2a-2e6a7cbc8f27"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SantaTrapN"",
+                    ""type"": ""Button"",
+                    ""id"": ""a0c23572-1a8a-439d-b87d-529c3faae923"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SantaTrapE"",
+                    ""type"": ""Button"",
+                    ""id"": ""454bb12b-dbf3-4abd-ad2e-11eee0b147d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""KrampusAttack2"",
+                    ""type"": ""Button"",
+                    ""id"": ""c777c396-29b9-40e7-8738-34fcd4201bef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""KrampusAttack3"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c32190e-3cb1-4a8d-92a9-87807a56c927"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -325,11 +357,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""93dfab70-f032-4762-a584-b9fe8b02be18"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChildThrow"",
+                    ""action"": ""KrampusAttack1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -340,7 +372,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SantaTrap"",
+                    ""action"": ""SantaTrapW"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -365,6 +397,50 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""CycleTrapsL"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfcec838-0ce1-43cb-8cb9-d9d5a2a34e0e"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SantaTrapN"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12c378ed-bc44-4f61-b40f-693115734d0c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SantaTrapE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14ed9c59-b320-4eb6-b61b-f73443ab34ef"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusAttack2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""727c15e6-c1de-4161-91b7-17deda38da40"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KrampusAttack3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -382,10 +458,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_KrampusMove = m_Gameplay.FindAction("KrampusMove", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
-        m_Gameplay_ChildThrow = m_Gameplay.FindAction("ChildThrow", throwIfNotFound: true);
-        m_Gameplay_SantaTrap = m_Gameplay.FindAction("SantaTrap", throwIfNotFound: true);
+        m_Gameplay_KrampusAttack1 = m_Gameplay.FindAction("KrampusAttack1", throwIfNotFound: true);
+        m_Gameplay_SantaTrapW = m_Gameplay.FindAction("SantaTrapW", throwIfNotFound: true);
         m_Gameplay_CycleTrapsR = m_Gameplay.FindAction("CycleTrapsR", throwIfNotFound: true);
         m_Gameplay_CycleTrapsL = m_Gameplay.FindAction("CycleTrapsL", throwIfNotFound: true);
+        m_Gameplay_SantaTrapN = m_Gameplay.FindAction("SantaTrapN", throwIfNotFound: true);
+        m_Gameplay_SantaTrapE = m_Gameplay.FindAction("SantaTrapE", throwIfNotFound: true);
+        m_Gameplay_KrampusAttack2 = m_Gameplay.FindAction("KrampusAttack2", throwIfNotFound: true);
+        m_Gameplay_KrampusAttack3 = m_Gameplay.FindAction("KrampusAttack3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -444,10 +524,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_KrampusMove;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
-    private readonly InputAction m_Gameplay_ChildThrow;
-    private readonly InputAction m_Gameplay_SantaTrap;
+    private readonly InputAction m_Gameplay_KrampusAttack1;
+    private readonly InputAction m_Gameplay_SantaTrapW;
     private readonly InputAction m_Gameplay_CycleTrapsR;
     private readonly InputAction m_Gameplay_CycleTrapsL;
+    private readonly InputAction m_Gameplay_SantaTrapN;
+    private readonly InputAction m_Gameplay_SantaTrapE;
+    private readonly InputAction m_Gameplay_KrampusAttack2;
+    private readonly InputAction m_Gameplay_KrampusAttack3;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -461,10 +545,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @KrampusMove => m_Wrapper.m_Gameplay_KrampusMove;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
-        public InputAction @ChildThrow => m_Wrapper.m_Gameplay_ChildThrow;
-        public InputAction @SantaTrap => m_Wrapper.m_Gameplay_SantaTrap;
+        public InputAction @KrampusAttack1 => m_Wrapper.m_Gameplay_KrampusAttack1;
+        public InputAction @SantaTrapW => m_Wrapper.m_Gameplay_SantaTrapW;
         public InputAction @CycleTrapsR => m_Wrapper.m_Gameplay_CycleTrapsR;
         public InputAction @CycleTrapsL => m_Wrapper.m_Gameplay_CycleTrapsL;
+        public InputAction @SantaTrapN => m_Wrapper.m_Gameplay_SantaTrapN;
+        public InputAction @SantaTrapE => m_Wrapper.m_Gameplay_SantaTrapE;
+        public InputAction @KrampusAttack2 => m_Wrapper.m_Gameplay_KrampusAttack2;
+        public InputAction @KrampusAttack3 => m_Wrapper.m_Gameplay_KrampusAttack3;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -501,18 +589,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                @ChildThrow.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
-                @ChildThrow.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
-                @ChildThrow.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
-                @SantaTrap.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrap;
-                @SantaTrap.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrap;
-                @SantaTrap.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrap;
+                @KrampusAttack1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack1;
+                @KrampusAttack1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack1;
+                @KrampusAttack1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack1;
+                @SantaTrapW.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapW;
+                @SantaTrapW.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapW;
+                @SantaTrapW.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapW;
                 @CycleTrapsR.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsR;
                 @CycleTrapsR.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsR;
                 @CycleTrapsR.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsR;
                 @CycleTrapsL.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsL;
                 @CycleTrapsL.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsL;
                 @CycleTrapsL.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsL;
+                @SantaTrapN.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapN;
+                @SantaTrapN.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapN;
+                @SantaTrapN.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapN;
+                @SantaTrapE.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapE;
+                @SantaTrapE.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapE;
+                @SantaTrapE.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrapE;
+                @KrampusAttack2.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack2;
+                @KrampusAttack2.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack2;
+                @KrampusAttack2.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack2;
+                @KrampusAttack3.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack3;
+                @KrampusAttack3.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack3;
+                @KrampusAttack3.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack3;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -544,18 +644,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @ChildThrow.started += instance.OnChildThrow;
-                @ChildThrow.performed += instance.OnChildThrow;
-                @ChildThrow.canceled += instance.OnChildThrow;
-                @SantaTrap.started += instance.OnSantaTrap;
-                @SantaTrap.performed += instance.OnSantaTrap;
-                @SantaTrap.canceled += instance.OnSantaTrap;
+                @KrampusAttack1.started += instance.OnKrampusAttack1;
+                @KrampusAttack1.performed += instance.OnKrampusAttack1;
+                @KrampusAttack1.canceled += instance.OnKrampusAttack1;
+                @SantaTrapW.started += instance.OnSantaTrapW;
+                @SantaTrapW.performed += instance.OnSantaTrapW;
+                @SantaTrapW.canceled += instance.OnSantaTrapW;
                 @CycleTrapsR.started += instance.OnCycleTrapsR;
                 @CycleTrapsR.performed += instance.OnCycleTrapsR;
                 @CycleTrapsR.canceled += instance.OnCycleTrapsR;
                 @CycleTrapsL.started += instance.OnCycleTrapsL;
                 @CycleTrapsL.performed += instance.OnCycleTrapsL;
                 @CycleTrapsL.canceled += instance.OnCycleTrapsL;
+                @SantaTrapN.started += instance.OnSantaTrapN;
+                @SantaTrapN.performed += instance.OnSantaTrapN;
+                @SantaTrapN.canceled += instance.OnSantaTrapN;
+                @SantaTrapE.started += instance.OnSantaTrapE;
+                @SantaTrapE.performed += instance.OnSantaTrapE;
+                @SantaTrapE.canceled += instance.OnSantaTrapE;
+                @KrampusAttack2.started += instance.OnKrampusAttack2;
+                @KrampusAttack2.performed += instance.OnKrampusAttack2;
+                @KrampusAttack2.canceled += instance.OnKrampusAttack2;
+                @KrampusAttack3.started += instance.OnKrampusAttack3;
+                @KrampusAttack3.performed += instance.OnKrampusAttack3;
+                @KrampusAttack3.canceled += instance.OnKrampusAttack3;
             }
         }
     }
@@ -571,9 +683,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnKrampusMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnChildThrow(InputAction.CallbackContext context);
-        void OnSantaTrap(InputAction.CallbackContext context);
+        void OnKrampusAttack1(InputAction.CallbackContext context);
+        void OnSantaTrapW(InputAction.CallbackContext context);
         void OnCycleTrapsR(InputAction.CallbackContext context);
         void OnCycleTrapsL(InputAction.CallbackContext context);
+        void OnSantaTrapN(InputAction.CallbackContext context);
+        void OnSantaTrapE(InputAction.CallbackContext context);
+        void OnKrampusAttack2(InputAction.CallbackContext context);
+        void OnKrampusAttack3(InputAction.CallbackContext context);
     }
 }

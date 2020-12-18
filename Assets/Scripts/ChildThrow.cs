@@ -15,8 +15,8 @@ public class ChildThrow : MonoBehaviour
     void Start()
     {
         control = new PlayerControls();
-        control.Gameplay.ChildThrow.performed += ThrowtheChild;
-        control.Gameplay.ChildThrow.Enable();
+        control.Gameplay.KrampusAttack1.performed += ThrowtheChild;
+        control.Gameplay.KrampusAttack1.Enable();
     }
     void ThrowtheChild(CallbackContext ctx)
     {

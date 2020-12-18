@@ -9,8 +9,6 @@ public class KrampusMovement : MonoBehaviour
     public float speed = 5.0f;
     Rigidbody player;
     PlayerControls control;
-    float forward = 0;
-    float sideways = 0;
     Vector2 direction;
     float distancetoGround;
     public float jumpspeed = 5.0f;

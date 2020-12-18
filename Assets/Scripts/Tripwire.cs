@@ -9,7 +9,6 @@ public class Tripwire : MonoBehaviour
     public float width = .25f;
     public float maxlength = 30f;
     public float time = 20f;
-    float conversion;
     bool initialhit = true;
     public float waittime = 5f;
     GameObject player;
@@ -82,7 +81,6 @@ public class Tripwire : MonoBehaviour
             newpos.x = (front.position.x + back.position.x) / 2;
         }
         transform.position = newpos;
-        float scaleZ = (length / 2) / conversion;
         Vector3 scale = transform.localScale;
         scale.z = length;
         transform.localScale = scale;

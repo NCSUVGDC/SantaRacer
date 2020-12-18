@@ -9,12 +9,16 @@ public class SantaTraps : MonoBehaviour
     public List<GameObject> traps = new List<GameObject>();
     public List<float> waittime = new List<float>();
     List<bool> waiting = new List<bool>();
-    int current = 0;
+    int[] current = new int[] { 0, 1, 2 };
     private void Start()
     {
         control = new PlayerControls();
-        control.Gameplay.SantaTrap.performed += SantaTrap;
-        control.Gameplay.SantaTrap.Enable();
+        control.Gameplay.SantaTrapW.performed += SantaTrapW;
+        control.Gameplay.SantaTrapW.Enable();
+        control.Gameplay.SantaTrapN.performed += SantaTrapN;
+        control.Gameplay.SantaTrapN.Enable();
+        control.Gameplay.SantaTrapE.performed += SantaTrapS;
+        control.Gameplay.SantaTrapE.Enable();
         control.Gameplay.CycleTrapsR.performed += CycleRight;
         control.Gameplay.CycleTrapsL.performed += CycleLeft;
         control.Gameplay.CycleTrapsL.Enable();
@@ -24,35 +28,65 @@ public class SantaTraps : MonoBehaviour
             waiting.Add(false);
         }
     }
-    void SantaTrap(CallbackContext ctx)
+    void SantaTrapW(CallbackContext ctx)
     {
-        if (!waiting[current])
+        if (!waiting[current[0]] && traps.Count > current[0])
         {
             Vector3 newpos = transform.position;
             newpos.y -= 2;
-            GameObject drop = GameObject.Instantiate(traps[current]);
+            GameObject drop = GameObject.Instantiate(traps[current[0]]);
             drop.transform.position = newpos;
-            waiting[current] = true;
-            StartCoroutine("wait", current);
+            waiting[current[0]] = true;
+            StartCoroutine("wait", current[0]);
+        }
+    }
+    void SantaTrapN(CallbackContext ctx)
+    {
+        if (!waiting[current[1]] && traps.Count > current[1])
+        {
+            Vector3 newpos = transform.position;
+            newpos.y -= 2;
+            GameObject drop = GameObject.Instantiate(traps[current[1]]);
+            drop.transform.position = newpos;
+            waiting[current[1]] = true;
+            StartCoroutine("wait", current[1]);
+        }
+    }
+    void SantaTrapS(CallbackContext ctx)
+    {
+        if (!waiting[current[2]]&&traps.Count > current[2])
+        {
+            Vector3 newpos = transform.position;
+            newpos.y -= 2;
+            GameObject drop = GameObject.Instantiate(traps[current[2]]);
+            drop.transform.position = newpos;
+            waiting[current[2]] = true;
+            StartCoroutine("wait", current[2]);
         }
     }
     void CycleRight(CallbackContext ctx)
     {
-        if (current == traps.Count - 1)
+        for(int i =0; i < current.Length;i++)
         {
-            current = 0;
+            if (current[i] >= traps.Count - 1)
+            {
+                current[i] = 0;
+            }
+            else
+                current[i]++;
         }
-        else
-            current++;
     }
     void CycleLeft(CallbackContext ctx)
     {
-        if (current == 0)
+        for (int i = 0; i < current.Length;i++)
         {
-            current = traps.Count - 1;
+            if (current[i] <= 0)
+            {
+                current[i] = traps.Count - 1;
+            }
+            else
+                current[i]--;
         }
-        else
-            current--;
     }
     IEnumerator wait(int num)
     {
