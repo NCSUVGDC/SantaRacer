@@ -443,6 +443,107 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""4d6906c9-ebe3-4a0f-a80e-ba5700b30caa"",
+            ""actions"": [
+                {
+                    ""name"": ""Change"",
+                    ""type"": ""Button"",
+                    ""id"": ""a401865c-bbe3-472a-b788-cac065fad867"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Choose"",
+                    ""type"": ""Button"",
+                    ""id"": ""714bbadf-4eeb-46ba-8d25-655c57bcd2da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1c13fc89-6d59-4ac8-80d0-2d6a4114c46c"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aeb4837e-4117-42b0-9385-212303da377a"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfb87402-3781-4642-ae29-af12cd6b2272"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9f0666f-6fa7-4b0c-9453-c2e3e3c78ce4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d01323d-e2b6-4272-944e-2c27b85b9aaa"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c887100-d832-463e-b26f-dd5974f976b8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad96891c-14b7-436e-a0ae-de47932b4925"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -466,6 +567,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_SantaTrapE = m_Gameplay.FindAction("SantaTrapE", throwIfNotFound: true);
         m_Gameplay_KrampusAttack2 = m_Gameplay.FindAction("KrampusAttack2", throwIfNotFound: true);
         m_Gameplay_KrampusAttack3 = m_Gameplay.FindAction("KrampusAttack3", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Change = m_Menu.FindAction("Change", throwIfNotFound: true);
+        m_Menu_Choose = m_Menu.FindAction("Choose", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -672,6 +777,47 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Change;
+    private readonly InputAction m_Menu_Choose;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Change => m_Wrapper.m_Menu_Change;
+        public InputAction @Choose => m_Wrapper.m_Menu_Choose;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Change.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnChange;
+                @Change.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnChange;
+                @Change.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnChange;
+                @Choose.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnChoose;
+                @Choose.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnChoose;
+                @Choose.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnChoose;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Change.started += instance.OnChange;
+                @Change.performed += instance.OnChange;
+                @Change.canceled += instance.OnChange;
+                @Choose.started += instance.OnChoose;
+                @Choose.performed += instance.OnChoose;
+                @Choose.canceled += instance.OnChoose;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IGameplayActions
     {
         void OnSpeed(InputAction.CallbackContext context);
@@ -691,5 +837,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSantaTrapE(InputAction.CallbackContext context);
         void OnKrampusAttack2(InputAction.CallbackContext context);
         void OnKrampusAttack3(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnChange(InputAction.CallbackContext context);
+        void OnChoose(InputAction.CallbackContext context);
     }
 }
