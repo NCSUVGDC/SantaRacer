@@ -43,9 +43,9 @@ public class KrampusMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, krampuscamera.transform.eulerAngles.y, transform.eulerAngles.z);
         if (movable)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, krampuscamera.transform.eulerAngles.y, transform.eulerAngles.z);
             player.position += transform.forward * direction[1] * speed * Time.deltaTime;
             player.position += transform.right * direction[0] * speed * Time.deltaTime;
         }
