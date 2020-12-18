@@ -84,6 +84,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SantaTrap",
+                    "type": "Button",
+                    "id": "56277d50-f987-4ccb-8d8a-a80802bc17e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "CycleTrapsR",
+                    "type": "Button",
+                    "id": "2dab7caf-16be-4e68-8b46-42b2c5085600",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "CycleTrapsL",
+                    "type": "Button",
+                    "id": "d3834339-aeaf-4045-8f2a-2e6a7cbc8f27",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -293,6 +317,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChildThrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32909eb6-4e11-48fe-8314-39d686cf5121",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SantaTrap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7400c4ad-d5c8-4064-b359-9590a4a10bf7",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CycleTrapsR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "301dae57-74e7-4e54-8dfd-e4bd99e6fd1c",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CycleTrapsL",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

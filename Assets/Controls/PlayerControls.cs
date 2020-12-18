@@ -97,6 +97,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SantaTrap"",
+                    ""type"": ""Button"",
+                    ""id"": ""56277d50-f987-4ccb-8d8a-a80802bc17e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CycleTrapsR"",
+                    ""type"": ""Button"",
+                    ""id"": ""2dab7caf-16be-4e68-8b46-42b2c5085600"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CycleTrapsL"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3834339-aeaf-4045-8f2a-2e6a7cbc8f27"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -308,6 +332,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""ChildThrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32909eb6-4e11-48fe-8314-39d686cf5121"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SantaTrap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7400c4ad-d5c8-4064-b359-9590a4a10bf7"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleTrapsR"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""301dae57-74e7-4e54-8dfd-e4bd99e6fd1c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleTrapsL"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +383,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_ChildThrow = m_Gameplay.FindAction("ChildThrow", throwIfNotFound: true);
+        m_Gameplay_SantaTrap = m_Gameplay.FindAction("SantaTrap", throwIfNotFound: true);
+        m_Gameplay_CycleTrapsR = m_Gameplay.FindAction("CycleTrapsR", throwIfNotFound: true);
+        m_Gameplay_CycleTrapsL = m_Gameplay.FindAction("CycleTrapsL", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -385,6 +445,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_ChildThrow;
+    private readonly InputAction m_Gameplay_SantaTrap;
+    private readonly InputAction m_Gameplay_CycleTrapsR;
+    private readonly InputAction m_Gameplay_CycleTrapsL;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -399,6 +462,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @ChildThrow => m_Wrapper.m_Gameplay_ChildThrow;
+        public InputAction @SantaTrap => m_Wrapper.m_Gameplay_SantaTrap;
+        public InputAction @CycleTrapsR => m_Wrapper.m_Gameplay_CycleTrapsR;
+        public InputAction @CycleTrapsL => m_Wrapper.m_Gameplay_CycleTrapsL;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +504,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ChildThrow.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
                 @ChildThrow.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
                 @ChildThrow.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChildThrow;
+                @SantaTrap.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrap;
+                @SantaTrap.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrap;
+                @SantaTrap.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSantaTrap;
+                @CycleTrapsR.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsR;
+                @CycleTrapsR.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsR;
+                @CycleTrapsR.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsR;
+                @CycleTrapsL.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsL;
+                @CycleTrapsL.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsL;
+                @CycleTrapsL.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCycleTrapsL;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -472,6 +547,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ChildThrow.started += instance.OnChildThrow;
                 @ChildThrow.performed += instance.OnChildThrow;
                 @ChildThrow.canceled += instance.OnChildThrow;
+                @SantaTrap.started += instance.OnSantaTrap;
+                @SantaTrap.performed += instance.OnSantaTrap;
+                @SantaTrap.canceled += instance.OnSantaTrap;
+                @CycleTrapsR.started += instance.OnCycleTrapsR;
+                @CycleTrapsR.performed += instance.OnCycleTrapsR;
+                @CycleTrapsR.canceled += instance.OnCycleTrapsR;
+                @CycleTrapsL.started += instance.OnCycleTrapsL;
+                @CycleTrapsL.performed += instance.OnCycleTrapsL;
+                @CycleTrapsL.canceled += instance.OnCycleTrapsL;
             }
         }
     }
@@ -488,5 +572,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnChildThrow(InputAction.CallbackContext context);
+        void OnSantaTrap(InputAction.CallbackContext context);
+        void OnCycleTrapsR(InputAction.CallbackContext context);
+        void OnCycleTrapsL(InputAction.CallbackContext context);
     }
 }
