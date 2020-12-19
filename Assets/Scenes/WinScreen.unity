@@ -475,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chosen: 1
+  other: {fileID: 516763344}
 --- !u!1 &516763340
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chosen: 0
+  other: {fileID: 428462810}
 --- !u!1 &1603459577
 GameObject:
   m_ObjectHideFlags: 0
