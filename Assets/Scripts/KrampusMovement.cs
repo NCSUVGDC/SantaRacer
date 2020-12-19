@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.SceneManagement;
 
 public class KrampusMovement : MonoBehaviour
 {
@@ -56,7 +57,8 @@ public class KrampusMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sleigh")
         {
-            //end game
+            PlayerPrefs.SetInt("Win", 0);
+            SceneManager.LoadScene(2);
         }
     }
 }

@@ -42,7 +42,7 @@ public class MenuScript : MonoBehaviour
     }
     void Select(CallbackContext ctx)
     {
-        if (chosen && tmp.text.Equals("Start"))
+        if (chosen && tmp.text.Equals("Start") || tmp.text.Equals("Replay"))
         {
             SceneManager.LoadScene(1);
         }
