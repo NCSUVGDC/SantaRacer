@@ -247,7 +247,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.01
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalPosition.y
@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.07
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalRotation.x
@@ -263,15 +263,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_RootOrder
@@ -283,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1942977375389158851, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -315,6 +315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31a3e1f279783de469cc07850c5aac60, type: 3}
+--- !u!1 &831881409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2582702762342970926, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
+  m_PrefabInstance: {fileID: 2582702763417777928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1104762329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582702762342970914, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.66
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 2582702762342970914, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -366,6 +371,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2582702762342970915, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
+      propertyPath: nutcracker2
+      value: 
+      objectReference: {fileID: 831881409}
     - target: {fileID: 2582702762342970926, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
       propertyPath: m_Name
       value: nutcracker (1)
@@ -467,6 +476,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1400720942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2582702762342970926, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
+  m_PrefabInstance: {fileID: 1104762329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473197789
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,9 +692,9 @@ MonoBehaviour:
   - {fileID: 3396361250244987733, guid: 45f78113c1175d543b27ab73f930a8d4, type: 3}
   - {fileID: 9189218299211757460, guid: b26cc488aee5a474185334809ea9523f, type: 3}
   waittime:
-  - 10
-  - 20
-  - 5
+  - 0
+  - 0
+  - 0
 --- !u!1001 &1363696411700966820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -804,7 +818,7 @@ PrefabInstance:
     - target: {fileID: 2582702762342970915, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
       propertyPath: nutcracker2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1400720942}
     - target: {fileID: 2582702762342970926, guid: 925829ce14afd5c468ccd18fc1b4fd0c, type: 3}
       propertyPath: m_Name
       value: nutcracker

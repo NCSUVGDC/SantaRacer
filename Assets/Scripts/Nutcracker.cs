@@ -18,7 +18,6 @@ public class Nutcracker : MonoBehaviour
         Collider[] objects = Physics.OverlapSphere(transform.position, radius);
         foreach(Collider obj in objects)
         {
-            Debug.Log(obj.gameObject.tag);
             if (obj.gameObject.tag == "nutcracker")
             {
                 nutcracker = obj.gameObject;

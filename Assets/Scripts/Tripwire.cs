@@ -24,7 +24,7 @@ public class Tripwire : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.tag=="Ground" && initialhit)
+        if (collision.gameObject.tag!="Sleigh" && initialhit)
         {
             initialhit = false;
             Expand();
