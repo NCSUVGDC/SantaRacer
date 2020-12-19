@@ -10,16 +10,18 @@ public class DeleteObject : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity = transform.forward * speed;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Sleigh")
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("Sleigh"))
         {
-            collision.gameObject.GetComponent<Rigidbody>().useGravity = true;
-            GetComponent<Collider>().enabled = false;
+            other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            other.gameObject.GetComponent<PlayerShip>().enabled = false;
             GetComponent<Renderer>().enabled = false;
-            StartCoroutine("nograv", collision.gameObject);
+            GetComponent<Collider>().enabled = false;
+            StartCoroutine("nograv", other.gameObject);
         }
-        else if (collision.gameObject.tag != "Krampus")
+        else if (other.gameObject.tag != "Krampus")
         {
             Destroy(gameObject);
         }
@@ -28,6 +30,7 @@ public class DeleteObject : MonoBehaviour
     {
         yield return new WaitForSeconds(grav);
         sleigh.GetComponent<Rigidbody>().useGravity = false;
+        sleigh.gameObject.GetComponent<PlayerShip>().enabled = true;
         Destroy(gameObject);
     }
 }
