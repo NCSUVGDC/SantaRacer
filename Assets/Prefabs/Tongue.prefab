@@ -109,3 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxdist: 30
+  strength: 1
+  seconds: 0
