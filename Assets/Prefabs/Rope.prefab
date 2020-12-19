@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yrot: 0
-  wireheight: 0.6
+  wireheight: 1.64
   width: 0.25
   maxlength: 50
   time: 60
