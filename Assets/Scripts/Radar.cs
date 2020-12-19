@@ -32,12 +32,15 @@ public class Radar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //angle = Vector3.Angle(santa.position, krampus.position);
+
+
         float delta_x = krampus.position.x - santa.position.x;
         float delta_z = krampus.position.z - santa.position.z;
-        angle = Mathf.Atan2(delta_z, delta_x);
-        angle = Mathf.Rad2Deg * angle;
-        angle = angle + 180;
+        angle = Mathf.Atan2(delta_z, delta_x) * Mathf.Rad2Deg;
+        if (angle < 0)
+        {
+            angle += 360;
+        }
         Debug.Log(angle);
         output = CalculateDirection(angle);
         switch (output)
