@@ -11,6 +11,7 @@ public class TongueGrapple : MonoBehaviour
     public float strength = 1f;
     public float seconds = 3.0f;
     bool pulling = false;
+    Vector3 lastPos;
     void Start()
     {
         Grab();
@@ -56,17 +57,31 @@ public class TongueGrapple : MonoBehaviour
         player.GetComponent<Rigidbody>().AddForce((finalpos - transform.position) * Vector3.Distance(transform.position, finalpos) * strength, ForceMode.Impulse);
         pulling = true;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (pulling)
         {
-            if (Vector3.Distance(player.transform.position,finalpos) <= 1.5)
+            if (Vector3.Distance(player.transform.position,finalpos) <= 1.5 || CalculateDistance())
             {
                 player.GetComponent<KrampusMovement>().movable = true;
                 player.GetComponent<KrampusMovement>().canjump = true;
                 player.GetComponent<Rigidbody>().useGravity = true;
                 Destroy(gameObject);
             }
+            lastPos = player.transform.position;
         }
+    }
+
+    private bool CalculateDistance()
+    {
+        if (lastPos == null)
+        {
+            return false;
+        }
+        if (Vector3.Magnitude(player.transform.position - lastPos) < 0.01)
+        {
+            return true;
+        }
+        return false;
     }
 }
