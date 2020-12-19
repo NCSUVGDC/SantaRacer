@@ -26,6 +26,10 @@ public class UICooldowns : MonoBehaviour
     bool isCooldown3;
     bool isCooldown4;
     bool isCooldown5;
+    public Text Objective;
+    public int giftsLeft;
+    public ChimneyCount x;
+    public int giftsCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +38,14 @@ public class UICooldowns : MonoBehaviour
         santaImage1.fillAmount = 0;
         santaImage2.fillAmount = 0;
         santaImage3.fillAmount = 0;
+        giftsLeft = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
+        giftsCount = (int)x.GetComponent<ChimneyCount>().used;
+        Objective.text = (giftsCount) + "/" + giftsLeft + "Gifts given";
         krampusAbility1();
         krampusAbility2();
         santaAbility1();
