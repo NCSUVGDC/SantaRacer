@@ -12,6 +12,7 @@ public class MenuScript : MonoBehaviour
     public bool chosen = false;
     Color red;
     Color black;
+    public MenuScript other;
     void Start()
     {
         red = new Color(145, 31, 31);
@@ -44,11 +45,18 @@ public class MenuScript : MonoBehaviour
     {
         if (chosen && tmp.text.Equals("Start") || tmp.text.Equals("Replay"))
         {
+            DisableSpace();
+            other.DisableSpace();
             SceneManager.LoadScene(1);
         }
         else
         {
             Application.Quit();
         }
+    }
+    public void DisableSpace()
+    {
+        control.Menu.Choose.Disable();
+        control.Menu.Change.Disable();
     }
 }

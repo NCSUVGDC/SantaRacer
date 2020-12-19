@@ -153,6 +153,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SwitchCams"",
+                    ""type"": ""Button"",
+                    ""id"": ""04beceab-8ec3-423d-8448-07240cfe3d9f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -236,7 +244,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""20a1bfb0-6922-4a0a-b21d-89c4e27f8a63"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
@@ -430,6 +438,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""KrampusAttack3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""278bf77b-6550-4cf2-912e-5aa9e9b7a987"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCams"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -556,6 +575,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_SantaTrapE = m_Gameplay.FindAction("SantaTrapE", throwIfNotFound: true);
         m_Gameplay_KrampusAttack2 = m_Gameplay.FindAction("KrampusAttack2", throwIfNotFound: true);
         m_Gameplay_KrampusAttack3 = m_Gameplay.FindAction("KrampusAttack3", throwIfNotFound: true);
+        m_Gameplay_SwitchCams = m_Gameplay.FindAction("SwitchCams", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Change = m_Menu.FindAction("Change", throwIfNotFound: true);
@@ -626,6 +646,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_SantaTrapE;
     private readonly InputAction m_Gameplay_KrampusAttack2;
     private readonly InputAction m_Gameplay_KrampusAttack3;
+    private readonly InputAction m_Gameplay_SwitchCams;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -647,6 +668,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @SantaTrapE => m_Wrapper.m_Gameplay_SantaTrapE;
         public InputAction @KrampusAttack2 => m_Wrapper.m_Gameplay_KrampusAttack2;
         public InputAction @KrampusAttack3 => m_Wrapper.m_Gameplay_KrampusAttack3;
+        public InputAction @SwitchCams => m_Wrapper.m_Gameplay_SwitchCams;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -707,6 +729,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @KrampusAttack3.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack3;
                 @KrampusAttack3.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack3;
                 @KrampusAttack3.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKrampusAttack3;
+                @SwitchCams.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchCams;
+                @SwitchCams.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchCams;
+                @SwitchCams.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchCams;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -762,6 +787,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @KrampusAttack3.started += instance.OnKrampusAttack3;
                 @KrampusAttack3.performed += instance.OnKrampusAttack3;
                 @KrampusAttack3.canceled += instance.OnKrampusAttack3;
+                @SwitchCams.started += instance.OnSwitchCams;
+                @SwitchCams.performed += instance.OnSwitchCams;
+                @SwitchCams.canceled += instance.OnSwitchCams;
             }
         }
     }
@@ -826,6 +854,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSantaTrapE(InputAction.CallbackContext context);
         void OnKrampusAttack2(InputAction.CallbackContext context);
         void OnKrampusAttack3(InputAction.CallbackContext context);
+        void OnSwitchCams(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -26,6 +26,7 @@ public class CameraMovement : MonoBehaviour
     Vector3 possiblepos;
     public bool incatapult = false;
     public GameObject catapult;
+
     // Use this for initialization
     void Start()
     {

@@ -1062,6 +1062,7 @@ GameObject:
   - component: {fileID: 7928953573995800146}
   - component: {fileID: 7928953573995800147}
   - component: {fileID: 7928953573995800148}
+  - component: {fileID: 6312652126736068339}
   m_Layer: 0
   m_Name: Player_Sleigh
   m_TagString: Untagged
@@ -1100,9 +1101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 7928953573995800142}
   speed: 1
-  maxSpeed: 10
+  maxSpeed: 15
   minSpeed: 0
-  speedSensitivity: 0.3
+  speedSensitivity: 0.5
   spinSensitivity: 0.75
   turnSensitivity: 1
   lateralFriction: 20
@@ -1123,6 +1124,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &6312652126736068339
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928953573995800142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5438719, y: 1.2000375, z: 4.0740356}
+  m_Center: {x: 0.00045454502, y: -0.7136748, z: 1.2045822}
 --- !u!1 &7928953574321101497
 GameObject:
   m_ObjectHideFlags: 0
