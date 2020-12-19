@@ -375,6 +375,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8b05dfa0-191b-4c3c-9e98-fa8afa62b3ed"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SantaTrapW"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""7400c4ad-d5c8-4064-b359-9590a4a10bf7"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": ""Press"",
@@ -408,8 +419,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b2a243ec-91e8-44e8-83a1-ed04fb3cb0d4"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SantaTrapN"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""12c378ed-bc44-4f61-b40f-693115734d0c"",
                     ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SantaTrapE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ac91d21-ab35-4f23-a0a2-81656027b75e"",
+                    ""path"": ""<Keyboard>/6"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
