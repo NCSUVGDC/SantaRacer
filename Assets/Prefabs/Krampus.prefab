@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1722f078aa671438bcf2a4ceea7d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpspeed: 5
+  speed: 10
+  jumpspeed: 7
   movable: 1
   canjump: 1
   krampuscamera: {fileID: 3919270514053077626}
@@ -152,7 +152,7 @@ MonoBehaviour:
   - {fileID: 5724353241026343508, guid: 6584d2e24680dfb4789d56b21fc9677c, type: 3}
   waittime:
   - 5
-  - 10
+  - 0.5
 --- !u!1 &3919270514053077629
 GameObject:
   m_ObjectHideFlags: 0
