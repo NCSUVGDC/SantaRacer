@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 3919270514053077627}
   - component: {fileID: 3919270514053077625}
   - component: {fileID: 3919270514224660803}
+  - component: {fileID: 8026097148682460866}
   m_Layer: 0
   m_Name: KrampusCamera
   m_TagString: Untagged
@@ -284,6 +285,20 @@ MonoBehaviour:
     m_Bits: 0
   incatapult: 0
   catapult: {fileID: 0}
+--- !u!114 &8026097148682460866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919270514053077629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d84ea443d2384b8774e96e4b05526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstCamera: {fileID: 3919270514053077625}
+  secondCamera: {fileID: 3919270514224660803}
 --- !u!1001 &8928981464647240574
 PrefabInstance:
   m_ObjectHideFlags: 0
