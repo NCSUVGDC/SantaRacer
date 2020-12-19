@@ -140,6 +140,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SwitchCams",
+                    "type": "Button",
+                    "id": "04beceab-8ec3-423d-8448-07240cfe3d9f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -223,7 +231,7 @@
                 {
                     "name": "",
                     "id": "20a1bfb0-6922-4a0a-b21d-89c4e27f8a63",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Keyboard>/r",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
@@ -415,6 +423,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "KrampusAttack3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "278bf77b-6550-4cf2-912e-5aa9e9b7a987",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchCams",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

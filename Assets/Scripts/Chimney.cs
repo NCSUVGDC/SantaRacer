@@ -12,7 +12,7 @@ public class Chimney : MonoBehaviour
     PlayerControls controls;
     bool pressed = false;
     private void Awake()
-    { 
+    {
         controls = new PlayerControls();
         controls.Gameplay.ChimneyUse.performed += OnPress;
         controls.Gameplay.ChimneyUse.canceled += OnRelease;
@@ -33,7 +33,7 @@ public class Chimney : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Sleigh")
+        if (other.CompareTag("Sleigh"))
         {
             if (timeelapsed < staytime && pressed)
             {
@@ -41,7 +41,9 @@ public class Chimney : MonoBehaviour
             }
             else if (timeelapsed >= staytime)
             {
-                gameObject.GetComponent<MeshRenderer>().material = green;
+                Destroy(transform.GetChild(1).gameObject);
+                Destroy(transform.GetChild(0).gameObject);
+                GetComponentInParent<ChimneyCount>().used++;
                 gameObject.GetComponent<SphereCollider>().enabled = false;
             }
         }
