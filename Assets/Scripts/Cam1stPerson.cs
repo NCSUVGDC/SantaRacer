@@ -18,9 +18,13 @@ public class Cam1stPerson : MonoBehaviour
     public float distance = 4f;
     public Transform catapult;
     public bool inCatapult = false;
+
+    Vector3 headPos;
+
     // Start is called before the first frame update
     void Start()
     {
+        headPos = transform.localPosition;
         Cursor.visible = false;
         control = new PlayerControls();
         control.Gameplay.CameraRotX.performed += OnRotX;
@@ -45,6 +49,7 @@ public class Cam1stPerson : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        transform.localPosition = headPos;
         x += MouseX * xSensitivity * Time.deltaTime;
         y -= MouseY * xSensitivity * Time.deltaTime;
         y = ClampAngle(y, yMin, yMax);
