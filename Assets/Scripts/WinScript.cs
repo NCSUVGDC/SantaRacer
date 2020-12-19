@@ -9,7 +9,7 @@ public class WinScript : MonoBehaviour
     public Material Krampus;
     public TextMeshPro text;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         int win = PlayerPrefs.GetInt("Win");
         if (win == 1)
