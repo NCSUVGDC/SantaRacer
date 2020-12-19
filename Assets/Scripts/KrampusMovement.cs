@@ -52,4 +52,11 @@ public class KrampusMovement : MonoBehaviour
     {
         return Physics.Raycast(transform.position, -Vector3.up, distancetoGround + .1f);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Sleigh")
+        {
+            //end game
+        }
+    }
 }
