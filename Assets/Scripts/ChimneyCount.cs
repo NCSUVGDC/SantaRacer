@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChimneyCount : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class ChimneyCount : MonoBehaviour
     {
         if (used==chimneycount)
         {
-            //end game
+            PlayerPrefs.SetInt("Win", 1);
+            SceneManager.LoadScene(2);
         }
     }
 }
