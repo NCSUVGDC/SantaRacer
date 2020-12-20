@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UICooldowns : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     [Header("Krampus Ability 1")]
     public Image krampusImage1;
@@ -30,15 +30,23 @@ public class UICooldowns : MonoBehaviour
     public int giftsLeft;
     public ChimneyCount x;
     public int giftsCount;
+
+    PlayerControls control;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        krampusImage1.fillAmount = 0;
-        krampusImage2.fillAmount = 0;
-        santaImage1.fillAmount = 0;
-        santaImage2.fillAmount = 0;
-        santaImage3.fillAmount = 0;
+        control = new PlayerControls();
+        //krampusImage1.fillAmount = 0;
+        //krampusImage2.fillAmount = 0;
+        //santaImage1.fillAmount = 0;
+        //santaImage2.fillAmount = 0;
+        //santaImage3.fillAmount = 0;
         giftsLeft = 10;
+
+        //control.Gameplay.KrampusAttack1.Enable();
+        //control.Gameplay.KrampusAttack2.Enable();
     }
 
     // Update is called once per frame
@@ -46,16 +54,16 @@ public class UICooldowns : MonoBehaviour
     {
         giftsCount = (int)x.GetComponent<ChimneyCount>().used;
         Objective.text = (giftsCount) + "/" + giftsLeft + "Gifts given";
-        krampusAbility1();
-        krampusAbility2();
-        santaAbility1();
-        santaAbility2();
-        santaAbility3();
+        //krampusAbility1();
+        //krampusAbility2();
+        //santaAbility1();
+        //santaAbility2();
+        //santaAbility3();
     }
 
     void santaAbility3()
     {
-        if (!isCooldown5 && Input.GetButtonDown("West"))
+        if (!isCooldown5 && control.Gameplay.SantaTrapW.triggered)
         {
             isCooldown5 = true;
             santaImage3.fillAmount = 1;
@@ -74,7 +82,7 @@ public class UICooldowns : MonoBehaviour
 
     void santaAbility2()
     {
-        if (!isCooldown4 && Input.GetButtonDown("North"))
+        if (!isCooldown4 && control.Gameplay.SantaTrapN.triggered)
         {
             isCooldown4 = true;
             santaImage2.fillAmount = 1;
@@ -93,7 +101,7 @@ public class UICooldowns : MonoBehaviour
 
     void santaAbility1()
     {
-        if (!isCooldown3 && Input.GetButtonDown("East"))
+        if (!isCooldown3 && control.Gameplay.SantaTrapE.triggered)
         {
             isCooldown3 = true;
             santaImage1.fillAmount = 1;
@@ -112,7 +120,7 @@ public class UICooldowns : MonoBehaviour
 
     void krampusAbility2()
     {
-        if (!isCooldown2 && Input.GetKeyDown("2"))
+        if (!isCooldown2 && control.Gameplay.KrampusAttack2.triggered)
         {
             isCooldown2 = true;
             krampusImage2.fillAmount = 1;
@@ -131,7 +139,7 @@ public class UICooldowns : MonoBehaviour
 
     void krampusAbility1()
     {
-        if (!isCooldown1 && Input.GetKeyDown("1"))
+        if (!isCooldown1 && control.Gameplay.KrampusAttack1.triggered)
         {
             isCooldown1 = true;
             santaImage1.fillAmount = 1;
