@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2582702762342970912}
   - component: {fileID: 2582702762342970927}
   - component: {fileID: 2582702762342970915}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: nutcracker
   m_TagString: nutcracker
   m_Icon: {fileID: 0}
