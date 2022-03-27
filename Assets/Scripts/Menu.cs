@@ -23,6 +23,8 @@ public class Menu : MonoBehaviour
     }
     public void MainMenu()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }

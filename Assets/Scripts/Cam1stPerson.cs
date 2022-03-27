@@ -25,6 +25,7 @@ public class Cam1stPerson : MonoBehaviour
     void Start()
     {
         headPos = transform.localPosition;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         control = new PlayerControls();
         control.Gameplay.CameraRotX.performed += OnRotX;

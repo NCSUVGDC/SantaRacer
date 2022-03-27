@@ -42,6 +42,8 @@ public class KrampusMovement : MonoBehaviour
         }
         else
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             pause.SetActive(true);
             Time.timeScale = 0;
         }
@@ -75,6 +77,8 @@ public class KrampusMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sleigh")
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             PlayerPrefs.SetInt("Win", 0);
             SceneManager.LoadScene(2);
         }
