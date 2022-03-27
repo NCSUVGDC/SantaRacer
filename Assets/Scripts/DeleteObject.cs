@@ -12,7 +12,6 @@ public class DeleteObject : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Sleigh"))
         {
             other.gameObject.GetComponent<Rigidbody>().useGravity = true;

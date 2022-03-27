@@ -54,12 +54,11 @@ public class SantaTraps : MonoBehaviour
     }
     void SantaTrapS(CallbackContext ctx)
     {
-        if (!waiting[current[2]]&&traps.Count > current[2])
+        if (!waiting[current[2]] && traps.Count > current[2])
         {
             Vector3 newpos = transform.position;
             newpos.y -= 2;
-            GameObject drop = GameObject.Instantiate(traps[current[2]]);
-            drop.transform.position = newpos;
+            GameObject drop = GameObject.Instantiate(traps[current[2]], transform);
             waiting[current[2]] = true;
             StartCoroutine("wait", current[2]);
         }

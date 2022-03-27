@@ -16,6 +16,7 @@ public class KrampusMovement : MonoBehaviour
     public bool movable = true;
     public bool canjump = true;
     public Camera krampuscamera;
+    [SerializeField] private GameObject pause;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,24 @@ public class KrampusMovement : MonoBehaviour
         control.Gameplay.Jump.performed += Jump;
         control.Gameplay.Jump.Enable();
         control.Gameplay.KrampusMove.Enable();
+        control.Menu.Pause.performed += PauseGame;
+        control.Menu.Pause.Enable();
         player = GetComponent<Rigidbody>();
+    }
+    void PauseGame(CallbackContext ctx)
+    {
+        if (pause.activeInHierarchy)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            pause.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pause.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
     void Jump(CallbackContext ctx)
     {
@@ -60,5 +78,10 @@ public class KrampusMovement : MonoBehaviour
             PlayerPrefs.SetInt("Win", 0);
             SceneManager.LoadScene(2);
         }
+    }
+    private void OnDestroy()
+    {
+        if (control != null)
+            control.Disable();
     }
 }

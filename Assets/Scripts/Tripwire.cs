@@ -23,8 +23,7 @@ public class Tripwire : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.gameObject.tag!="Sleigh" && initialhit)
+        if (collision.gameObject.tag != "Sleigh" && initialhit)
         {
             initialhit = false;
             Expand();
@@ -52,34 +51,28 @@ public class Tripwire : MonoBehaviour
         Vector3 direction = maxlength * transform.forward;
         RaycastHit hit;
         float length = 0;
-        Transform front = null;
-        Transform back=null;
-        if (Physics.Linecast(transform.position, transform.position + direction, out hit))
+        Vector3 hit1 = Vector3.zero;
+        Vector3 hit2 = Vector3.zero;
+        if (Physics.Raycast(transform.position, direction, out hit))
         {
-            front = hit.transform;
+            hit1 = hit.point;
             length += hit.distance;
         }
         else
         {
             Destroy(gameObject);
         }
-        if (Physics.Linecast(transform.position, transform.position - direction, out hit))
+        if (Physics.Raycast(transform.position, -direction, out hit))
         {
-            back = hit.transform;
+            hit2 = hit.point;
             length += hit.distance;
         }
         else
         {
             Destroy(gameObject);
         }
-        if (transform.rotation.y == 0)
-        {
-            newpos.z = (front.position.z + back.position.z)/ 2;
-        }
-        else
-        {
-            newpos.x = (front.position.x + back.position.x) / 2;
-        }
+        newpos.z = (hit1.z + hit2.z) / 2;
+        newpos.x = (hit1.x + hit2.x) / 2;
         transform.position = newpos;
         Vector3 scale = transform.localScale;
         scale.z = length;

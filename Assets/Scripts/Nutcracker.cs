@@ -8,14 +8,16 @@ public class Nutcracker : MonoBehaviour
     GameObject nutcracker = null;
     GameObject nut2 = null;
     GameObject santa;
+    [SerializeField] private LayerMask nutcrackerMask;
     public float radius = 5f;
+    [SerializeField] private float wallTime;
     private void Awake()
     {
         Find();
     }
     void Find()
     {
-        Collider[] objects = Physics.OverlapSphere(transform.position, radius);
+        Collider[] objects = Physics.OverlapSphere(transform.position, radius, nutcrackerMask);
         foreach(Collider obj in objects)
         {
             if (obj.gameObject.tag == "nutcracker")
@@ -36,14 +38,14 @@ public class Nutcracker : MonoBehaviour
     }
     void Wall()
     {
-        Vector3 pos = (nutcracker.transform.position + nut2.transform.position) / 2;
-        float dist = Vector3.Distance(nutcracker.transform.position, nut2.transform.position);
-        Transform walltransform = wall.transform;
-        Vector3 scale = wall.transform.localScale;
-        scale.x = dist;
-        walltransform.position = pos;
-        walltransform.localScale = scale;
-        GameObject spawnedwall = Instantiate(wall, walltransform);
-        spawnedwall.transform.forward = nutcracker.transform.right;
+        GameObject wall = nutcracker.GetComponent<NutcrackerCode>().wall;
+        wall.SetActive(true);
+        StartCoroutine(WallAlive(wall));
+    }
+    IEnumerator WallAlive(GameObject wall)
+    {
+        yield return new WaitForSeconds(wallTime);
+        wall.SetActive(false);
+        Destroy(gameObject);
     }
 }

@@ -4,10 +4,11 @@ using TMPro;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    TextMeshPro tmp;
+    TextMeshProUGUI tmp;
     PlayerControls control;
     public bool chosen = false;
     Color red;
@@ -17,7 +18,7 @@ public class MenuScript : MonoBehaviour
     {
         red = new Color(145, 31, 31);
         black = new Color(0, 0, 0, 255);
-        tmp = GetComponent<TextMeshPro>();
+        tmp = GetComponent<TextMeshProUGUI>();
         control = new PlayerControls();
         control.Menu.Choose.performed += Select;
         control.Menu.Change.performed += Change;
@@ -45,8 +46,6 @@ public class MenuScript : MonoBehaviour
     {
         if (chosen && tmp.text.Equals("Start") || tmp.text.Equals("Replay"))
         {
-            DisableSpace();
-            other.DisableSpace();
             SceneManager.LoadScene(1);
         }
         else
@@ -54,9 +53,8 @@ public class MenuScript : MonoBehaviour
             Application.Quit();
         }
     }
-    public void DisableSpace()
+    private void OnDestroy()
     {
-        control.Menu.Choose.Disable();
-        control.Menu.Change.Disable();
+        control.Disable();
     }
 }
