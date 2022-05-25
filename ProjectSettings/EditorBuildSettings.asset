@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Aaron-Scene.unity
+    guid: 8e1b3ffb084364d418225e4570337c98
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 95c5f93751a95a6499f57b0ebf4e62a8
+  - enabled: 1
+    path: Assets/Scenes/Joseph_Aurora.unity
+    guid: 02819c7ac50783f46afb0dc8711334b5
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 0dc5d8023c008fc41b454959b988053e
   m_configObjects: {}

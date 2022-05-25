@@ -1,0 +1,91 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.SceneManagement;
+
+public class KrampusMovement : MonoBehaviour
+{
+    public float speed = 5.0f;
+    Rigidbody player;
+    PlayerControls control;
+    Vector2 direction;
+    float distancetoGround;
+    public float jumpspeed = 5.0f;
+    public bool movable = true;
+    public bool canjump = true;
+    public Camera krampuscamera;
+    [SerializeField] private GameObject pause;
+    // Start is called before the first frame update
+    void Start()
+    {
+        distancetoGround = GetComponent<Collider>().bounds.extents.y;
+        control = new PlayerControls();
+        control.Gameplay.KrampusMove.performed += Direction;
+        control.Gameplay.KrampusMove.canceled += ctx => direction = new Vector2(0,0);
+        control.Gameplay.Jump.performed += Jump;
+        control.Gameplay.Jump.Enable();
+        control.Gameplay.KrampusMove.Enable();
+        control.Menu.Pause.performed += PauseGame;
+        control.Menu.Pause.Enable();
+        player = GetComponent<Rigidbody>();
+    }
+    void PauseGame(CallbackContext ctx)
+    {
+        if (pause.activeInHierarchy)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            pause.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            pause.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+    void Jump(CallbackContext ctx)
+    {
+        if (Grounded() && canjump)
+        {
+            player.velocity = new Vector3(player.velocity.x, jumpspeed, player.velocity.z);
+        }
+    }
+    void Direction(CallbackContext ctx)
+    {
+        direction = ctx.ReadValue<Vector2>();
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, krampuscamera.transform.eulerAngles.y, transform.eulerAngles.z);
+        if (movable)
+        {
+            player.position += transform.forward * direction[1] * speed * Time.deltaTime;
+            player.position += transform.right * direction[0] * speed * Time.deltaTime;
+        }
+    }
+    bool Grounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distancetoGround + .1f);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Sleigh")
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            PlayerPrefs.SetInt("Win", 0);
+            SceneManager.LoadScene(2);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (control != null)
+            control.Disable();
+    }
+}
